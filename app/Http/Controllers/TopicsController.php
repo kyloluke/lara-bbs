@@ -25,9 +25,7 @@ class TopicsController extends Controller
 
     public function show(Request $request, Topic $topic)
     {
-        // url 矫正
         // slug 不为空 并且 不等于传来的slug的情况下  重定向
-        // todo 如果修改了文章标题的话 slug 不会更新！！！
         if(!empty($topic->slug) &&  $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }

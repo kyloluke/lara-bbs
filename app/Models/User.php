@@ -8,10 +8,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Traits\LastActivedAtHelper;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use HasRoles, MustVerifyEmailTrait, ActiveUserHelper;
+    use HasRoles, MustVerifyEmailTrait, ActiveUserHelper, LastActivedAtHelper;
     // 为了方便扩展该方法 取个别名
     use Notifiable {
         notify as protected BaseNotify;

@@ -14,8 +14,6 @@ class PagesController extends Controller
 
     public function test(User $user)
     {
-        $res = \DB::table('users')->select();
-//        $res = User::query()->select();
-        $user->getActiveUsers();
+        
     }
 }

@@ -14,7 +14,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     use HasRoles, MustVerifyEmailTrait, ActiveUserHelper;
     // 为了方便扩展该方法 取个别名
     use Notifiable {
-        notify as protected BaseNotify;
+    notify as protected BaseNotify;
     }
 
     // 这里的 $instance 就是
@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'introduction'
+        'name', 'email', 'password', 'avatar', 'introduction', 'phone'
     ];
 
     /**

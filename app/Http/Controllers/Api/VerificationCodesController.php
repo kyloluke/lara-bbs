@@ -12,10 +12,10 @@ class VerificationCodesController extends Controller
     {
         $phone = $request->phone;
 
-        $code = str_pad(random_int(1, 9999), 4, 0, STR_PAD_LEFT);
         if (!app()->environment('production')) {
-            $code = 1234;
+            $code = '1234';
         } else {
+            $code = str_pad(random_int(1, 9999), 4, 0, STR_PAD_LEFT);
             try {
                 $response = $sms->send($phone, [
                     'content' =>  '【路丁丁】您的验证码是1234。如非本人操作，请忽略本短信'

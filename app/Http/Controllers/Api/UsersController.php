@@ -7,6 +7,9 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+    /**
+     * 
+     */
     public function store(UserRequest $request)
     {
         $verifyData = \Cache::get($request->verification_key);
@@ -15,8 +18,7 @@ class UsersController extends Controller
             return $this->response->error('验证码已失效', 422);
         }
         if (!hash_equals($verifyData['code'], $request->verification_code)) {
-            // 返回  401
-            return $this->response->errorUnauthorized('验证码错误');
+            return $this->response->errorUnauthorized('验证码错误'); // 返回  401
         };
 
         $user = User::create([

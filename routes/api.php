@@ -19,8 +19,13 @@ $api->version(
                 'expired' => config('api.rate_limits.sign.expires')
             ],
             function ($api) {
-                $api->post('verification', 'VerificationCodesController@store')->name('api.verificationCodes.store');
+                // 获取手机验证码
+                $api->post('verificationCodes', 'VerificationCodesController@store')->name('api.verificationCodes.store');
+                // 携带手机验证码 注册用户
                 $api->post('users', 'UsersController@store')->name('api.users.store');
+                // 获取图片验证码
+                $api->post('captchas', 'CaptchasController@store')->name('api.captchas.store');
+                
             }
         );
     }
